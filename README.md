@@ -13,7 +13,7 @@ The repository contains:
 - slurm script to run on CSF
 - slurm.out files to demonstrate results after running the scripts on the CSF
 
-### Models
+## Models
 
 Model 1 is a simple single-layer model using the linear function and BCE (binary cross-entropy loss) with logits, combining a sigmoid layer and the classic BCE loss. This is because combining them in one class is more numerically stable. For optimisation, it uses SGD (stochastic gradient descent), which uses a fixed learning rate. Learning does not happen in batches. It is a mathematical equivalent to this binary classifier from CL1:
 
@@ -41,9 +41,9 @@ for i in range(n_iters):
 
 Model 2 is an MLP model with two hidden layers with ReLU activation and dropout (0.3). For optimisation, it uses Adam, which adjusts learning rate and generally yields faster convergence, using a default learning rate of 1e-3 and weight decay of 1e-4 to penalise large weights. These choices were made to prevent overfitting. The training loop uses mini-batch training (with batch size of 256) via DataLoader, with shuffling on. 
 
-#### Evaluation 
+## Evaluation 
 
 Models were evaluated using macro F1 score, AUC, further evaluated with bootstrapping. 
 
-##### Results 
+## Results 
 
