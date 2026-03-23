@@ -13,6 +13,8 @@ The repository contains:
 - slurm script to run on CSF
 - slurm.out files to demonstrate results after running the scripts on the CSF
 
+Each script is divided into sections. Broadly, the scripts follow this order: import packages, download data, preprocess data, manually train-test split, convert data into torch tensors, set up model, train model, evaluate. 
+
 ## Models
 
 Model 1 is a simple single-layer model using the linear function and BCE (binary cross-entropy loss) with logits, combining a sigmoid layer and the classic BCE loss. This is because combining them in one class is more numerically stable. For optimisation, it uses SGD (stochastic gradient descent), which uses a fixed learning rate. Learning does not happen in batches. It is a mathematical equivalent to this binary classifier from CL1:
@@ -38,12 +40,31 @@ for i in range(n_iters):
   weights = weights - lr*dw
   bias = bias - lr*db
 ```
-
 Model 2 is an MLP model with two hidden layers with ReLU activation and dropout (0.3). For optimisation, it uses Adam, which adjusts learning rate and generally yields faster convergence, using a default learning rate of 1e-3 and weight decay of 1e-4 to penalise large weights. These choices were made to prevent overfitting. The training loop uses mini-batch training (with batch size of 256) via DataLoader, with shuffling on. 
 
 ## Evaluation 
 
-Models were evaluated using macro F1 score, AUC, further evaluated with bootstrapping. 
+Models were evaluated using macro F1 score, AUC, further evaluated with bootstrapping. The combined script contains ```def bootstrap_auc_diff``` for comparison. It returns observed difference (AUC1 - AUC2 on test set), bootstrapped mean difference, 95% confidence interval of difference, and the p-value. Samples with only one class are excluded as AUC becomes undefined.  
 
 ## Results 
 
+Model 1 individual run:
+```bash
+Macro F1: 0.7914763817577608
+AUC: 0.8757831300689385
+Using bootstrapping...
+Bootstrap F1: 0.7916  95% CI [0.7823, 0.8009]
+```
+Model 2 individual run:
+```bash
+Macro F1: 0.8202806642655683
+AUC: 0.9049801097044914
+Using bootstrapping...
+Bootstrap F1: 0.8203  95% CI [0.8111, 0.8289]
+```
+Combined script run:
+
+
+## Script additional details 
+
+The data is manually split into test and train. 
