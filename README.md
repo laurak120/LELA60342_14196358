@@ -10,10 +10,10 @@ The repository contains:
 - Model 1 script (data preprocessing, model, training, evaluation) in *.py format
 - Model 2 script (data preprocessing, model, training, evaluation) in *.py format
 - Combined script with both models to perform comparison in evaluation in *.py format
-- slurm script to run on CSF
-- slurm.out files to demonstrate results after running the scripts on the CSF
+- slurm script to run a given script on CSF
+- slurm.out files to demonstrate results having run the scripts on the CSF
 
-Each script is divided into sections. Broadly, the scripts follow this order: import packages, download data, preprocess data, manually train-test split, convert data into torch tensors, set up model, train model, evaluate. 
+Each *.py script is divided into sections. Broadly, the scripts follow this order: import packages, download data, preprocess data, manually train-test split, convert data into torch tensors, set up model, train model, evaluate. 
 
 ## Models
 
@@ -44,7 +44,7 @@ Model 2 is an MLP model with two hidden layers with ReLU activation and dropout 
 
 ## Evaluation 
 
-Models were evaluated using macro F1 score, AUC, further evaluated with bootstrapping. The combined script contains ```def bootstrap_auc_diff``` for comparison. It returns observed difference (AUC1 - AUC2 on test set), bootstrapped mean difference, 95% confidence interval of difference, and the p-value. Samples with only one class are excluded as AUC becomes undefined.  
+Models were evaluated using macro F1 score, AUC, further evaluated with bootstrapping. The combined script contains ```def bootstrap_auc_diff``` for comparison. It returns observed difference (AUC1 - AUC2 on test set), bootstrapped mean difference, 95% confidence interval of difference, and the p-value. Samples with only one class are excluded as AUC becomes undefined. The alpha for the p-value is 0.05. 
 
 ## Results 
 
@@ -64,7 +64,22 @@ Bootstrap F1: 0.8203  95% CI [0.8111, 0.8289]
 ```
 Combined script run:
 
+```bash
+Training Model 1: Logistic Regression
+Model 1 — Macro F1: 0.8017  |  AUC: 0.8841
+Training Model 2: MLP
+Model 2 — Macro F1: 0.8126  |  AUC: 0.8981
+Bootstrap AUC Comparison...
 
-## Script additional details 
+Model 1 AUC: 0.8841
+Model 2 AUC: 0.8981
+Observed AUC difference (M1 - M2): -0.0140
+Bootstrap mean difference: -0.0138
+95% CI of difference: [-0.0198, -0.0082]
+Two-sided p-value: 0.0000
 
-The data is manually split into test and train. 
+Conclusion: The AUC difference is statistically significant (p < 0.05).
+  Model 2 has a significantly higher AUC.
+```
+
+
