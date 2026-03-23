@@ -15,6 +15,8 @@ The repository contains:
 
 Each *.py script is divided into sections. Broadly, the scripts follow this order: import packages, download data, preprocess data, manually train-test split, convert data into torch tensors, set up model, train model, evaluate. 
 
+The jobscript needs to be adjusted for running each script by inserting the name of the script in the dedicated space. Number of nodes and GPUs used can be altered to increase speed of training. ```watch -n 1 tail -c 2048 slurm-JOBID.out``` can be used to monitor the job. 
+
 ## Models
 
 Model 1 is a simple single-layer model using the linear function and BCE (binary cross-entropy loss) with logits, combining a sigmoid layer and the classic BCE loss. This is because combining them in one class is more numerically stable. For optimisation, it uses SGD (stochastic gradient descent), which uses a fixed learning rate. Learning does not happen in batches. It is a mathematical equivalent to this binary classifier from CL1:
@@ -49,14 +51,14 @@ Models were evaluated using macro F1 score, AUC, further evaluated with bootstra
 ## Results 
 
 Model 1 individual run:
-```bash
+```shell
 Macro F1: 0.7914763817577608
 AUC: 0.8757831300689385
 Using bootstrapping...
 Bootstrap F1: 0.7916  95% CI [0.7823, 0.8009]
 ```
 Model 2 individual run:
-```bash
+```shell
 Macro F1: 0.8202806642655683
 AUC: 0.9049801097044914
 Using bootstrapping...
@@ -64,7 +66,7 @@ Bootstrap F1: 0.8203  95% CI [0.8111, 0.8289]
 ```
 Combined script run:
 
-```bash
+```shell
 Training Model 1: Logistic Regression
 Model 1 — Macro F1: 0.8017  |  AUC: 0.8841
 Training Model 2: MLP
