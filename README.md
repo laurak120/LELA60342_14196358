@@ -10,7 +10,7 @@ The repository contains:
 - Model 1 script (data preprocessing, model, training, evaluation) in *.py format
 - Model 2 script (data preprocessing, model, training, evaluation) in *.py format
 - Combined script with both models to perform comparison in evaluation in *.py format
-- slurm script to run a given script on CSF
+- slurm script template to run a given script on CSF
 - slurm.out files to demonstrate results having run the scripts on the CSF
 
 Each *.py script is divided into sections. Broadly, the scripts follow this order: import packages, download data, preprocess data, manually train-test split, convert data into torch tensors, set up model, train model, evaluate. 
@@ -27,8 +27,8 @@ y = y_int_sentiment_train.reshape(-1, 1)
 weights = np.random.rand(num_features, 1)
 num_samples=len(y)
 bias=np.random.rand(1) 
-n_iters = 000
-lr= 0
+n_iters = #desired num_iters
+lr= #desired lr
 logistic_loss=[]
 eps= 1e-7
 for i in range(n_iters):
@@ -42,7 +42,7 @@ for i in range(n_iters):
   weights = weights - lr*dw
   bias = bias - lr*db
 ```
-Model 2 is an MLP model with two hidden layers with ReLU activation and dropout (0.3). For optimisation, it uses Adam, which adjusts learning rate and generally yields faster convergence, using a default learning rate of 1e-3 and weight decay of 1e-4 to penalise large weights. These choices were made to prevent overfitting. The training loop uses mini-batch training (with batch size of 256) via DataLoader, with shuffling on. 
+Model 2 is an MLP model with two hidden layers with ReLU activation and dropout (0.3). For optimisation, it uses Adam, which adjusts learning rate and generally yields faster convergence, using a default learning rate of 1e-3 and weight decay of 1e-4 to penalise large weights. The training loop uses mini-batch training (with batch size of 256) via DataLoader, with shuffling on. 
 
 ## Evaluation 
 
@@ -83,5 +83,10 @@ Two-sided p-value: 0.0000
 Conclusion: The AUC difference is statistically significant (p < 0.05).
   Model 2 has a significantly higher AUC.
 ```
+### Interpretation 
 
+The MLP classifier yields marginally better but statistially significant performance in accordance with the AUC test. 
 
+## Limitations
+
+The evaluation methods could be more robust to target other questions regarding the performance of classifiers. For the purpose of the task evaluation was limited according to task specifications. 
