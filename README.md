@@ -68,16 +68,16 @@ Combined script run:
 
 ```shell
 Training Model 1: Logistic Regression
-Model 1 — Macro F1: 0.8017  |  AUC: 0.8841
+Model 1 — Macro F1: 0.7981  |  AUC: 0.8825
 Training Model 2: MLP
-Model 2 — Macro F1: 0.8126  |  AUC: 0.8981
+Model 2 — Macro F1: 0.8063  |  AUC: 0.8952
 Bootstrap AUC Comparison...
 
-Model 1 AUC: 0.8841
-Model 2 AUC: 0.8981
-Observed AUC difference (M1 - M2): -0.0140
-Bootstrap mean difference: -0.0138
-95% CI of difference: [-0.0198, -0.0082]
+Model 1 AUC: 0.8825
+Model 2 AUC: 0.8952
+Observed AUC difference (M1 - M2): -0.0128
+Bootstrap mean difference: -0.0129
+95% CI of difference: [-0.0186, -0.0069]
 Two-sided p-value: 0.0000
 
 Conclusion: The AUC difference is statistically significant (p < 0.05).
