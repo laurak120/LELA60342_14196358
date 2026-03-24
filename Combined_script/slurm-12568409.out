@@ -1,0 +1,21 @@
+Job is using 2 GPU(s) with ID(s) $≈CUDA_VISIBLE_DEVICES and 24 CPU core(s).
+Downloading data...
+Preprocessing data...
+Splitting data...
+Using device: cuda
+Training Model 1: Logistic Regression
+Model 1 — Macro F1: 0.7981  |  AUC: 0.8825
+Training Model 2: MLP
+Model 2 — Macro F1: 0.8063  |  AUC: 0.8952
+Bootstrap AUC Comparison...
+
+Model 1 AUC: 0.8825
+Model 2 AUC: 0.8952
+Observed AUC difference (M1 - M2): -0.0128
+Bootstrap mean difference: -0.0129
+95% CI of difference: [-0.0186, -0.0069]
+Two-sided p-value: 0.0000
+
+Conclusion: The AUC difference is statistically significant (p < 0.05).
+  Model 2 has a significantly higher AUC.
+/var/spool/slurmd/job12568409/slurm_script: line 13: 12568409: command not found
