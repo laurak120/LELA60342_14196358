@@ -1,5 +1,5 @@
 #!/bin/bash --login                                                                                                     
-#SBATCH -J COMBSCRPT                                                                                                    
+#SBATCH -J [INSERT JOB NAME HERE]                                                                                                    
 #SBATCH -p gpuA40GB                                                                                                     
 #SBATCH -G 2                                                                                                            
 #SBATCH -n 24                                                                                                           
