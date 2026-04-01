@@ -17,6 +17,8 @@ Each *.py script is divided into sections. Broadly, the scripts follow this orde
 
 The jobscript needs to be adjusted for running each script by inserting the name of the script in the dedicated space. Number of nodes and GPUs used can be altered to increase speed of training. ```watch -n 1 tail -c 2048 slurm-JOBID.out``` can be used to monitor the job. 
 
+Data is manually split into train-test, much like in the CL1 submission, with 80% of the dataset belonging to train and remaining 20% belonging to test. ```python replacement = False``` is used to ensure that all datapoints in a sample are unique. 
+
 ## Models
 
 Model 1 is a simple single-layer model using the linear function and BCE (binary cross-entropy loss) with logits, combining a sigmoid layer and the classic BCE loss. This is because combining them in one class is more numerically stable. For optimisation, it uses SGD (stochastic gradient descent), which uses a fixed learning rate. Learning does not happen in batches. It is a mathematical equivalent to this binary classifier from CL1:
