@@ -17,7 +17,7 @@ Each *.py script is divided into sections. Broadly, the scripts follow this orde
 
 The jobscript needs to be adjusted for running each script by inserting the name of the script in the dedicated space. Number of nodes and GPUs used can be altered to increase speed of training. ```watch -n 1 tail -c 2048 slurm-JOBID.out``` can be used to monitor the job. 
 
-Data is manually split into train-test, much like in the CL1 submission, with 80% of the dataset belonging to train and remaining 20% belonging to test. ```python replacement = False``` is used to ensure that all datapoints in a sample are unique. 
+Data is manually split into train-test, much like in the CL1 submission, with 80% of the dataset belonging to train and remaining 20% belonging to test. ```python replace = False``` is used to ensure that all datapoints in a sample are unique. 
 
 ## Models
 
