@@ -6,20 +6,35 @@ This repository contains code for the Research Methods 2 module task. The task i
 
 The underlying task (CL1) was to build a classifier to determine whether a review of a product is positive or negative (binary classification). The dataset consists of Amazon reviews.
 
-The repository contains: 
-- Model 1 script (data preprocessing, model, training, evaluation) in *.py format
-- Model 2 script (data preprocessing, model, training, evaluation) in *.py format
-- Combined script with both models to perform comparison in evaluation in *.py format
-- slurm script template to run a given script on CSF
-- slurm.out files to demonstrate results having run the scripts on the CSF
-- requirements.txt file for installing dependencies 
-
 Each *.py script is divided into sections. Broadly, the scripts follow this order: import packages, download data, preprocess data, manually train-test split, convert data into torch tensors, set up model, train model, evaluate. 
 
 The jobscript needs to be adjusted for running each script by inserting the name of the script in the dedicated space. Number of nodes and GPUs used can be altered to increase speed of training. ```watch -n 1 tail -c 2048 slurm-JOBID.out``` can be used to monitor the job. 
 
 Data is manually split into train-test, much like in the CL1 submission, with 80% of the dataset belonging to train and remaining 20% belonging to test. ```replace = False``` is used to ensure that all datapoints in a sample are unique. 
 
+This project implements a full sentiment classification pipeline, comparing a 
+logistic regression baseline against a multi-layer perceptron (MLP). The models are evaluated using standard metrics (F1, ROC, AUC) and further compared using bootstrap resampling to assess statistical significance.
+
+## Repository Structure
+
+```text
+LELA60342_14196358/
+├── Combined_script/
+│   ├── combined_script.py
+│   └── slurm-12568409.out
+│
+├── Model1/
+│   ├── RMmodel1.py
+│   └── slurm-12224880.out
+│
+├── Model2/
+│   ├── RMmodel2.py
+│   └── slurm-12226744.out
+│
+├── jobscript.slurm
+├── requirements.txt
+└── README.md
+```
 ## Dependencies 
 
 - numpy
