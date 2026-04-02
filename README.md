@@ -12,6 +12,7 @@ The repository contains:
 - Combined script with both models to perform comparison in evaluation in *.py format
 - slurm script template to run a given script on CSF
 - slurm.out files to demonstrate results having run the scripts on the CSF
+- requirements.txt file for installing dependencies 
 
 Each *.py script is divided into sections. Broadly, the scripts follow this order: import packages, download data, preprocess data, manually train-test split, convert data into torch tensors, set up model, train model, evaluate. 
 
