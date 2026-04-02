@@ -19,6 +19,20 @@ The jobscript needs to be adjusted for running each script by inserting the name
 
 Data is manually split into train-test, much like in the CL1 submission, with 80% of the dataset belonging to train and remaining 20% belonging to test. ```replace = False``` is used to ensure that all datapoints in a sample are unique. 
 
+## Dependencies 
+
+- numpy
+- torch
+- matplotlib
+- scikit-learn
+
+Install dependencies:
+
+```
+pip install -r requirements.txt
+pip install torch
+```
+
 ## Models
 
 Model 1 is a simple single-layer model using the linear function and BCE (binary cross-entropy loss) with logits, combining a sigmoid layer and the classic BCE loss. This is because combining them in one class is more numerically stable. For optimisation, it uses SGD (stochastic gradient descent), which uses a fixed learning rate. Learning does not happen in batches. It is a mathematical equivalent to this binary classifier from CL1:
