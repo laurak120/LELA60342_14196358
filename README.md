@@ -2,18 +2,16 @@
 
 ## Overview 
 
-This repository contains code for the Research Methods 2 module task. The task includes: implementing a logistic regression classifier from CL1 using PyTorch, making additions to improve the initial model (thereby producing model 2), calculate AUC for both classifiers, and implement bootstrapping to generate a p-value for classifier comparison, testing whether AUC for model 2 is significantly higher than model 1. 
+This project implements a full sentiment classification pipeline, comparing a 
+logistic regression baseline against a multi-layer perceptron (MLP). The models are evaluated using standard metrics (F1, ROC, AUC) and further compared using bootstrap resampling to assess statistical significance.
 
-The underlying task (CL1) was to build a classifier to determine whether a review of a product is positive or negative (binary classification). The dataset consists of Amazon reviews.
+This repository contains code for the Research Methods 2 module task. The task includes: implementing a logistic regression classifier from CL1 using PyTorch, making additions to improve the initial model (thereby producing model 2), calculate AUC for both classifiers, and implement bootstrapping to generate a p-value for classifier comparison, testing whether AUC for model 2 is significantly higher than model 1. The underlying task (CL1) was to build a classifier to determine whether a review of a product is positive or negative (binary classification). The dataset consists of Amazon reviews.
 
 Each *.py script is divided into sections. Broadly, the scripts follow this order: import packages, download data, preprocess data, manually train-test split, convert data into torch tensors, set up model, train model, evaluate. 
 
 The jobscript needs to be adjusted for running each script by inserting the name of the script in the dedicated space. Number of nodes and GPUs used can be altered to increase speed of training. ```watch -n 1 tail -c 2048 slurm-JOBID.out``` can be used to monitor the job. 
 
 Data is manually split into train-test, much like in the CL1 submission, with 80% of the dataset belonging to train and remaining 20% belonging to test. ```replace = False``` is used to ensure that all datapoints in a sample are unique. 
-
-This project implements a full sentiment classification pipeline, comparing a 
-logistic regression baseline against a multi-layer perceptron (MLP). The models are evaluated using standard metrics (F1, ROC, AUC) and further compared using bootstrap resampling to assess statistical significance.
 
 ## Repository Structure
 
