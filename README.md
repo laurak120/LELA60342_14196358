@@ -117,6 +117,10 @@ Conclusion: The AUC difference is statistically significant (p < 0.05).
 
 The MLP classifier yields marginally better but statistially significant performance in accordance with the AUC test. 
 
+### Other
+
+The main scripts also issue and save a .png to visualise the loss. 
+
 ## Limitations
 
 The evaluation methods could be more robust to target other questions regarding the performance of classifiers. For the purpose of the task evaluation was limited according to task specifications. 
